@@ -1,7 +1,7 @@
 <p>list {{list.id}} | {{list.name}} works!</p>
 <button (click)="createTask('Test')"> Create Test Task</button>
 <ul>
-    <li *ngFor="let t of tasks | async">
+    <li *ngFor="let t of tasks | async ">
         <app-task  [task]="t"></app-task>
     </li>
 </ul>

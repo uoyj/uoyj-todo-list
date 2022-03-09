@@ -8,7 +8,7 @@ import { TodoTask } from '../common/TodoTask.interface';
 })
 export class TaskComponent implements OnInit {
 
-  @Input() task: TodoTask | any;
+  @Input() task!: TodoTask;
 
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { List } from '../common/List.interface';
 import { TodoTask } from '../common/TodoTask.interface';
 import { TaskService } from '../task/task.service';
@@ -11,11 +11,15 @@ import { TaskService } from '../task/task.service';
 })
 export class ListComponent implements OnInit {
 
-  @Input() list: List | any;
+  @Input() list!: List ;
   tasks: Observable<TodoTask[]>;
 
   constructor(private taskSrvc: TaskService) {
-    this.tasks = this.taskSrvc.getAll();
+    this.tasks = this.taskSrvc.getAll().pipe(
+      map(taskList => {
+        return taskList.filter( task => task.listId == this.list.id)
+      })
+    );
   }
 
   ngOnInit(): void {
