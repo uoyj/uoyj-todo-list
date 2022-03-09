@@ -11,6 +11,7 @@ import { ListService } from './list/list.service';
 export class AppComponent {
   title = 'uoyj-todo-list';
   lists: Observable<List[]>;
+  
   constructor(private listSrvc:ListService) {
     this.lists = this.listSrvc.getAll();
   }

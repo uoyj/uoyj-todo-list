@@ -1,8 +1,8 @@
-export interface Task {
+export interface TodoTask {
+    completed: boolean,
     createDate: string;
     id: number;
-    listId: string;
+    listId: number;
     name: string;
-    status: string;
     updateDate: string;
 }
